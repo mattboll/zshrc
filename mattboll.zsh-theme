@@ -52,6 +52,32 @@ function git_prompt_ahead_number() {
     fi 
 }
 
+# ZSH function that shortens
+# a very long path for display by removing
+# the left most parts and replacing them
+# with a leading ...
+#
+# + keep some left part of the path if asked
+# thanks to liquidprompt for that
+_lp_shorten_path()
+{
+    # the character that will replace the part of the path that is masked
+    local mask=" … "
+    # index of the directory to keep from the root (starts at 0 whith bash, 1 with zsh)
+    local keep=2
+
+    local p="${PWD/$HOME/~}"
+    local len="${#p}"
+
+    local max_len=$((${COLUMNS:-80}*25/100))
+
+    if [[ "$len" -gt "$max_len" ]]; then
+        echo "%-${keep}~%${max_len}<${mask}<%~%<<"
+    else
+        echo "%~"
+    fi
+}
+
 
 # Get the status of the working tree (copied and modified from git.zsh)
 custom_git_prompt_status() {
@@ -102,7 +128,7 @@ function custom_git_prompt() {
 }
 
 # %B sets bold text
-PROMPT='%B$PREFIX %~ $(custom_git_prompt)%{$M%}%B»%b%{$RESET%} '
+PROMPT='%B$PREFIX $(_lp_shorten_path) $(custom_git_prompt)%{$M%}%B»%b%{$RESET%} '
 RPS1="${return_code} %D{%a %b %d, %I:%M}"
 
 ZSH_THEME_GIT_PROMPT_PREFIX="%{$Y%}‹"
