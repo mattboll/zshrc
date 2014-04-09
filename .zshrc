@@ -1,5 +1,5 @@
 # Path to your oh-my-zsh configuration.
-ZSH=$HOME/oh-my-zsh
+ZSH=$HOME/.oh-my-zsh
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -47,14 +47,13 @@ plugins=(git git-extras debian cp colored-man screen autojump)
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
-export PATH=~/bin:$PATH:/usr/local/sbin:/usr/local/bin:/mnt/debiansda/opt/glassfish312/glassfish/bin
+export PATH=~/bin:$PATH:/usr/local/sbin:/usr/local/bin:/home/mattboll/glassfish3/glassfish/bin:~/bin/play-2.2.1
 alias pg='ps aux | grep'
 alias mvnskiptest="mvn install -Dmaven.test.skip=true"
 alias trunk="cd ~/srmvision/srmvision_trunk/srmvision"
 alias tf='tail -F'
 alias logglass='tail -F -n 100 /mnt/debiansda/opt/glassfish312/glassfish/domains/domain3/logs/server.log'
 alias mysqlsrm='mysql -u srm -psrm srm'
-alias mysqleservices='mysql -ueservices -pkhjK7S846W eservices'
 alias mysqltest='mysql -uhudson_srmtest -phudson_srmtest hudson_srmtest'
 alias pull='git pull --rebase'
 alias cdautodeploy='cd /mnt/debiansda/opt/glassfish312/glassfish/domains/domain3/autodeploy'
@@ -67,6 +66,7 @@ alias kg="kn glass  && rmlock"
 alias liquibase="java -jar /home/mattboll/repository/org/liquibase/liquibase-core/2.0.3/liquibase-core-2.0.3.jar"
 alias tities="/home/mattboll/teeworlds-hour/teeworlds-0.6.2-source/teeworlds"
 alias ack="ack-grep"
+alias cp="rsync -P"
 
 function kn {
 pg $1|grep -v grep|awk '{print $2}'|xargs kill -9
@@ -106,3 +106,6 @@ function cleanOrig {
 stty stop undef
 stty start undef
 
+export MAVEN_OPTS='-javaagent:/home/mattboll/.m2/maven-color-agent-0.3.jar'
+export ANDROID_HOME=/home/mattboll/bin/android-sdk-linux/
+source ~/zshrc/k/k.sh
