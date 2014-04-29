@@ -106,5 +106,5 @@ function cleanOrig {
 stty stop undef
 stty start undef
 
-export MAVEN_OPTS='-javaagent:/home/mattboll/.m2/maven-color-agent-0.3.jar'
-export ANDROID_HOME=/home/mattboll/bin/android-sdk-linux/
+#export MAVEN_OPTS='-javaagent:/home/mattboll/.m2/maven-color-agent-0.4.jar'
+export ANDROID_HOME=/hdd/bin/android-studio/sdk
