@@ -13,9 +13,18 @@ B=$fg_no_bold[blue]
 RESET=$reset_color
 
 if [ "$(whoami)" = "root" ]; then
-    PROMPTCOLOR="%{$R%}" PREFIX="-!-";
+    PREFIX="%{$R%}ROOT";
 else
-    PROMPTCOLOR="" PREFIX="---";
+    if [[ -z "$SSH_CLIENT" ]]; then
+        PREFIX="---";
+    else
+        PREFIX="$(whoami)";
+    fi
+fi
+if [[ -z "$SSH_CLIENT" ]]; then
+        prompt_host=""
+else
+        prompt_host=%{$fg_bold[white]%}@%{$reset_color$fg[yellow]%}$(hostname -s)
 fi
 
 local return_code="%(?..%{$R%}%? ↵%{$RESET%})"
@@ -128,7 +137,7 @@ function custom_git_prompt() {
 }
 
 # %B sets bold text
-PROMPT='%B$PREFIX $(_lp_shorten_path) $(custom_git_prompt)%{$M%}%B»%b%{$RESET%} '
+PROMPT='%B$PREFIX$prompt_host %{$G%} $(_lp_shorten_path) $(custom_git_prompt)%{$M%}%B»%b%{$RESET%} '
 RPS1="${return_code} %D{%a %b %d, %I:%M}"
 
 ZSH_THEME_GIT_PROMPT_PREFIX="%{$Y%}‹"
