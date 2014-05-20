@@ -50,7 +50,7 @@ git_remote_status() {
 
 # Checks if there are commits ahead from remote
 function git_prompt_ahead_number() {
-    nbcommits=$(command git log origin/$(current_branch)..HEAD 2> /dev/null | grep '^commit' | wc -l)
+    nbcommits=${$(command git log origin/$(current_branch)..HEAD 2> /dev/null | grep '^commit' | wc -l )// /}
     if [[ -n ${nbcommits} ]] ; then
         if [ $nbcommits -gt 0 ]
         then
