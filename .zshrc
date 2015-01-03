@@ -42,7 +42,7 @@ ZSH_THEME="mattboll"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git git-extras debian cp colored-man screen autojump k)
+plugins=(git git-extras debian cp colored-man screen autojump k zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -108,3 +108,5 @@ stty start undef
 
 #export MAVEN_OPTS='-javaagent:/home/mattboll/.m2/maven-color-agent-0.4.jar'
 export ANDROID_HOME=/hdd/bin/android-studio/sdk
+
+zstyle ':completion:*' list-colors 'di=34:ln=35:so=32:pi=33:ex=31:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30'
