@@ -70,6 +70,7 @@ alias cp="rsync -P"
 alias ls="ls --color -h"
 alias ct="/home/mattboll/github/ct/ct"
 alias adb="/home/mattboll/bin/android-sdk/platform-tools/adb"
+alias tmux="tmux -2"
 
 function kn {
 pg $1|grep -v grep|awk '{print $2}'|xargs kill -9
@@ -113,3 +114,5 @@ stty start undef
 export ANDROID_HOME=/hdd/bin/android-studio/sdk
 
 zstyle ':completion:*' list-colors 'di=34:ln=35:so=32:pi=33:ex=31:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30'
+
+export LESS='-sCmqPm--Less--(?eEND:%pb\%.)'
