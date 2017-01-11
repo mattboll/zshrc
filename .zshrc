@@ -71,6 +71,7 @@ alias ls="ls --color -h"
 alias ct="/home/mattboll/github/ct/ct"
 alias adb="/home/mattboll/bin/android-sdk/platform-tools/adb"
 alias tmux="tmux -2"
+alias es17="/home/mbollot/bin/elasticsearch-1.7.6/bin/elasticsearch"
 
 function kn {
 pg $1|grep -v grep|awk '{print $2}'|xargs kill -9
