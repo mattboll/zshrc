@@ -65,7 +65,6 @@ alias ga='git commit -a'
 alias kg="kn glass  && rmlock"
 alias liquibase="java -jar /home/mattboll/repository/org/liquibase/liquibase-core/2.0.3/liquibase-core-2.0.3.jar"
 alias tities="/home/mattboll/teeworlds-hour/teeworlds-0.6.2-source/teeworlds"
-alias ack="ack-grep"
 alias cp="rsync -P"
 alias ls="ls --color -h"
 alias ct="/home/mattboll/github/ct/ct"
