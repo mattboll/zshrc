@@ -49,69 +49,21 @@ source $ZSH/oh-my-zsh.sh
 # Customize to your needs...
 export PATH=~/bin:$PATH:/usr/local/sbin:/usr/local/bin:/home/mattboll/glassfish3/glassfish/bin:~/bin/play-2.2.1
 alias pg='ps aux | grep'
-alias mvnskiptest="mvn install -Dmaven.test.skip=true"
-alias trunk="cd ~/srmvision/srmvision_trunk/srmvision"
-alias tf='tail -F'
-alias logglass='tail -F -n 100 /mnt/debiansda/opt/glassfish312/glassfish/domains/domain3/logs/server.log'
-alias mysqlsrm='mysql -u srm -psrm srm'
-alias mysqltest='mysql -uhudson_srmtest -phudson_srmtest hudson_srmtest'
 alias pull='git pull --rebase'
-alias cdautodeploy='cd /mnt/debiansda/opt/glassfish312/glassfish/domains/domain3/autodeploy'
-alias rmlock='rm /mnt/debiansda/opt/glassfish312/glassfish/domains/domain3/imq/instances/imqbroker/lock'
-alias astart='asadmin start-domain'
-alias astop='asadmin stop-domain'
 alias gm='git mergetool -t vimdiff'
 alias ga='git commit -a'
-alias kg="kn glass  && rmlock"
-alias liquibase="java -jar /home/mattboll/repository/org/liquibase/liquibase-core/2.0.3/liquibase-core-2.0.3.jar"
-alias tities="/home/mattboll/teeworlds-hour/teeworlds-0.6.2-source/teeworlds"
 alias cp="rsync -P"
 alias ls="ls --color -h"
 alias ct="/home/mbollot/github/ct/ct"
-alias adb="/home/mattboll/bin/android-sdk/platform-tools/adb"
 alias tmux="tmux -2"
-alias es17="/home/mbollot/bin/elasticsearch-1.7.6/bin/elasticsearch"
 
 function kn {
 pg $1|grep -v grep|awk '{print $2}'|xargs kill -9
 }
 
-
-function cleanOrig {
-    find . -name '*.orig' -delete
-}
-
-#install jdk
-# update-alternatives --install /usr/bin/java java /opt/java/bin/java 20000
-# update-alternatives --install /usr/bin/javac javac /opt/java/bin/javac 20000
-# update-alternatives --install /usr/bin/javah javah /opt/java/bin/javah 20000
-# update-alternatives --install /usr/bin/javap javap /opt/java/bin/javap 20000
-# update-alternatives --install /usr/bin/jarsigner jarsigner /opt/java/bin/jarsigner 20000
-# update-alternatives --install /usr/bin/jps jps /opt/java/bin/jps 20000
-#update-alternatives --config java
-#update-alternatives --config javac
-#update-alternatives --config javap
-#update-alternatives --config javah
-#update-alternatives --config jarsigner
-
-#drop database srm;
-#drop database quartz;
-#create database srm;
-#create database quartz;
-#grant all privileges on srm.* to srm identified by "srm";
-#grant all privileges on quartz.* to srm identified by "srm";
-#revoke drop on srm.* from srm;
-#grant select on quartz.* to srmconsult identified by "srm";
-#flush privileges;
-
-#PackBot jenkins build -TAG-MAJOR, VERSION=3.9.2&VERSIONDEV=3.9.2.1&VERSIONMAJEURE=4.0.0&FILM=zonesJPQL&ChangeLog=Changelog OK
-
 #usefull to use ctrl+s in vim
 stty stop undef
 stty start undef
-
-#export MAVEN_OPTS='-javaagent:/home/mattboll/.m2/maven-color-agent-0.4.jar'
-export ANDROID_HOME=/hdd/bin/android-studio/sdk
 
 zstyle ':completion:*' list-colors 'di=34:ln=35:so=32:pi=33:ex=31:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30'
 
