@@ -16,7 +16,7 @@ if [ "$(whoami)" = "root" ]; then
     PREFIX="%{$R%}ROOT";
 else
     if [[ -z "$SSH_CLIENT" ]]; then
-        PREFIX="---";
+        PREFIX="-";
     else
         PREFIX="$(whoami)";
     fi
