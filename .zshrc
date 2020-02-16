@@ -5,9 +5,8 @@ ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-#ZSH_THEME="intheloop"
 ZSH_THEME="mattboll"
-#ZSH_THEME="liquidprompt"
+#ZSH_THEME="clear"
 
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
@@ -42,20 +41,17 @@ ZSH_THEME="mattboll"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git git-extras debian cp colored-man screen autojump k zsh-syntax-highlighting)
+plugins=(catimg common-aliases git git-extras git-flow cp golang k zsh-syntax-highlighting thefuck tmux)
 
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
-export PATH=~/bin:$PATH:/usr/local/sbin:/usr/local/bin:/home/mattboll/glassfish3/glassfish/bin:~/bin/play-2.2.1
+export PATH=~/bin:$PATH:/usr/local/sbin:/usr/local/bin
 alias pg='ps aux | grep'
 alias pull='git pull --rebase'
 alias gm='git mergetool -t vimdiff'
 alias ga='git commit -a'
-alias cp="rsync -P"
-alias ls="ls --color -h"
 alias ct="/home/mbollot/github/ct/ct"
-alias tmux="tmux -2"
 
 function kn {
 pg $1|grep -v grep|awk '{print $2}'|xargs kill -9
