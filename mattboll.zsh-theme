@@ -13,12 +13,12 @@ B=$fg_no_bold[blue]
 RESET=$reset_color
 
 if [ "$(whoami)" = "root" ]; then
-    PREFIX="%{$R%}ROOT";
+    PREPROMPT="%{$R%}ROOT";
 else
     if [[ -z "$SSH_CLIENT" ]]; then
-        PREFIX="-";
+        PREPROMPT="";
     else
-        PREFIX="$(whoami)";
+        PREPROMPT="$(whoami)";
     fi
 fi
 if [[ -z "$SSH_CLIENT" ]]; then
@@ -27,7 +27,7 @@ else
         prompt_host=%{$fg_bold[white]%}@%{$reset_color$fg[yellow]%}$(hostname -s)
 fi
 
-local return_code="%(?..%{$R%}%? ↵%{$RESET%})"
+local return_code="%(?..%{$R%}%? ☢ %{$RESET%})"
 
 git_remote_status() {
     remote=${$(command git rev-parse --verify ${hook_com[branch]}@{upstream} --symbolic-full-name 2>/dev/null)/refs\/remotes\/}
@@ -137,7 +137,7 @@ function custom_git_prompt() {
 }
 
 # %B sets bold text
-PROMPT='%B$PREFIX$prompt_host %{$G%} $(_lp_shorten_path) $(custom_git_prompt)%{$M%}%B»%b%{$RESET%} '
+PROMPT='%B$PREPROMPT$prompt_host %{$G%} $(_lp_shorten_path) $(custom_git_prompt)%{$M%}%B»%b%{$RESET%} '
 RPS1="${return_code} %D{%a %b %d, %I:%M}"
 
 ZSH_THEME_GIT_PROMPT_PREFIX="%{$Y%}‹"
